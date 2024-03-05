@@ -1,0 +1,20 @@
+-- +goose Up
+-- +goose StatementBegin
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(3) DEFAULT NULL,
+  `updated_at` datetime(3) DEFAULT NULL,
+  `deleted_at` datetime(3) DEFAULT NULL,
+  `name` longtext COLLATE utf8mb3_turkish_ci,
+  `surname` longtext COLLATE utf8mb3_turkish_ci,
+  `email` longtext COLLATE utf8mb3_turkish_ci,
+  `password` longtext COLLATE utf8mb3_turkish_ci,
+  PRIMARY KEY (`id`),
+  KEY `idx_users_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_turkish_ci;
+-- +goose StatementEnd
+
+-- +goose Down
+-- +goose StatementBegin
+DROP TABLE IF NOT EXISTS `users`;
+-- +goose StatementEnd
